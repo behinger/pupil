@@ -101,10 +101,10 @@ class Reference_Surface(object):
 
         self.gaze_on_srf = []  # points on surface for realtime feedback display
 
-        self.glfont = fontstash.Context()
-        self.glfont.add_font('opensans', get_opensans_font_path())
-        self.glfont.set_size(22)
-        self.glfont.set_color_float((0.2, 0.5, 0.9, 1.0))
+        #self.glfont = fontstash.Context()
+        #self.glfont.add_font('opensans', get_opensans_font_path())
+        #self.glfont.set_size(22)
+        #self.glfont.set_color_float((0.2, 0.5, 0.9, 1.0))
 
         self.old_corners_robust = None
         if saved_definition is not None:

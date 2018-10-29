@@ -63,7 +63,10 @@ else:
     # opencv3 - highgui module has been split into parts: imgcodecs, videoio, and highgui itself
     opencv_libraries = ['opencv_core', 'opencv_highgui', 'opencv_videoio', 'opencv_imgcodecs', 'opencv_imgproc', 'opencv_video']
     opencv_library_dir = '/usr/local/opt/opencv/lib'
-    opencv_include_dir = '/usr/local/opt/opencv/include'
+    #opencv_include_dir = '/usr/local/opt/opencv/include'
+    opencv_library_dir = '../../../../../local/build/build_opencv/lib'
+    opencv_include_dir = '../../../../../local/build/build_opencv/include'
+	
     if(not os.path.isfile(opencv_library_dir+'/libopencv_core.so')):
         ros_dists = ['kinetic', 'jade', 'indigo']
         for ros_dist in ros_dists:
@@ -73,7 +76,7 @@ else:
                 opencv_include_dir = '/opt/ros/'+ros_dist+'/include/opencv-3.1.0-dev'
                 opencv_libraries = [lib + '3' for lib in opencv_libraries]
                 break
-    include_dirs = [np.get_include(), '/usr/local/include/eigen3','/usr/include/eigen3', shared_cpp_include_path, singleeyefitter_include_path, opencv_include_dir]
+    include_dirs = [np.get_include(), '/usr/local/include/eigen3','/usr/include/eigen3', shared_cpp_include_path, singleeyefitter_include_path, opencv_include_dir,'../../../../../local/build/build_ceres/include','../../../../../local/build/eigen3']
     if platform.system() == 'Linux':
         python_version = sys.version_info
         # boost_python-py34
@@ -82,7 +85,7 @@ else:
         boost_lib = 'boost_python3'
     libs = ['ceres', boost_lib]+opencv_libraries
     xtra_obj2d = []
-    library_dirs = [opencv_library_dir]
+    library_dirs = [opencv_library_dir,'../../../../../local/build/build_ceres/lib']
 
 extensions = [
     Extension(
